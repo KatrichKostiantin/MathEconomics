@@ -43,35 +43,61 @@ x5 <- data$LATITUDE
 modAll <- lm(Y ~ x1 + x2 + x3 + x4+ x5)
 
 summary(modAll)
+#  (Intercept)  1.274e+02  
+#  x1           1.018e+02  
+#  x2           8.501e+01  
+#  x3           1.389e-04  
+#  x4          -4.802e+00  
+#  x5          -1.571e+00
 
 #### (B) ####
 
 # Будуємо однофакторні лінійні моделі за 5-ма факторами
 
-mod1 <- lm(Y~x1)
+mod1 <- lm(Y ~ x1)
 summary(mod1)
 
-mod2 <- lm(Y~x2)
+mod2 <- lm(Y ~ x2)
 summary(mod2)
 
-mod3 <- lm(Y~x3)
+mod3 <- lm(Y ~ x3)
 summary(mod3)
 
-mod4 <- lm(Y~x4)
+mod4 <- lm(Y ~ x4)
 summary(mod4)
 
-mod5 <- lm(Y~x5)
+mod5 <- lm(Y ~ x5)
 summary(mod5)
 
 X <- cbind(1, x1,x2,x3,x4,x5)
 beta <- solve(t(X) %*% X) %*% t(X) %*% Y
+
 beta
-modAll
-
-
-
+#        1.274163e+02
+#    x1  1.018060e+02
+#    x2  8.500818e+01
+#    x3  1.388777e-04
+#    x4 -4.801891e+00
+#    x5 -1.571043e+00
+#    Співпадає
 
 #### (C) ####
 
 # Модель №3 є найкращою, бо R^2 є найбільшим
+
+#### (D) ####
+# Формула знаходження прогнозу
+# Y = 101.8 * X1 + 85 * X2 + 0.0002 * X3 - 4.8 * X4 - 1.5 * X5
+
+# Для прогнозу візьмемо такі значення:
+# X1 (RERA)       = 1
+# X2 (BHK_NO)     = 3
+# X3 (SQUARE_FT)  = 1300
+# X4 (LONGITUDE)  = 25
+# X5 (LATITUDE)   = 77
+
+Y_predict <- 101.8 * 1 + 85 * 3 + 0.0002 * 1300 - 4.8 * 25 - 1.5 * 77
+Y_predict
+# Y_predict = 121.56
+
 
