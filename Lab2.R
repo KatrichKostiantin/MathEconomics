@@ -62,6 +62,16 @@ summary(mod4)
 
 mod5 <- lm(Y~x5)
 summary(mod5)
+
+X <- cbind(1, x1,x2,x3,x4,x5)
+beta <- solve(t(X) %*% X) %*% t(X) %*% Y
+beta
+modAll
+
+
+
+
 #### (C) ####
 
 # Модель №3 є найкращою, бо R^2 є найбільшим
+
