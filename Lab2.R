@@ -89,21 +89,8 @@ summary(mod5)
 # Модель №3 є найкращою, бо R^2 є найбільшим
 
 #### (D) ####
-# Формула знаходження прогнозу
-# Y = 101.8 * X1 + 85 * X2 + 0.0002 * X3 - 4.8 * X4 - 1.5 * X5
 
-# Для прогнозу візьмемо такі значення:
-# X1 (RERA)       = 1
-# X2 (BHK_NO)     = 3
-# X3 (SQUARE_FT)  = 1300
-# X4 (LONGITUDE)  = 25
-# X5 (LATITUDE)   = 77
-
-Y_predict <- 101.8 * 1 + 85 * 3 + 0.0002 * 1300 - 4.8 * 25 - 1.5 * 77
-Y_predict
-# Y_predict = 121.56
-
-predict(modAll)
-
-
-
+Y_hat <- predict(modAll)
+Y_hat
+e <- Y_hat-Y
+e
