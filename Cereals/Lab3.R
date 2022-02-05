@@ -1,11 +1,13 @@
-data <- read.csv("data.csv")
+data <- read.csv("cereal.csv")
+summary(data)
 
-# Залежна змінна PRICE
-Y <- data$PRICE
+
+# Залежна змінна rating
+Y <- data$rating
 
 ####(A)####
-# Незалежна змінна x1 - Загальна площа будинку в квадратних футах
-x1 <- data$SQUARE_FT
+# Незалежна змінна x1 - калорій на порцію
+x1 <- data$calories
 mod1 <- lm(Y ~ x1)
 summod1<-summary(mod1)
 summary(mod1)
@@ -32,8 +34,8 @@ plot(mod1,1)
 plot(mod1,2)
 plot(mod1,3)
 plot(mod1$residuals, type = "o")
-# Незалежна змінна x2 - Довгота власності
-x2 <- data$LONGITUDE
+# Незалежна змінна x2 - грамів жиру
+x2 <- data$fat
 mod2 <- lm(Y ~ x2)
 summod2<-summary(mod2)
 summary(mod2)
@@ -61,8 +63,8 @@ plot(mod2,1)
 plot(mod2,2)
 plot(mod2,3)
 plot(mod2$residuals, type = "o")
-# Незалежна змінна x3 - Широта власності
-x3 <- data$LATITUDE
+# Незалежна змінна x3 - грам цукрів
+x3 <- data$sugars
 mod3 <- lm(Y ~ x3)
 summod3<-summary(mod3)
 summary(mod3)
@@ -93,11 +95,12 @@ plot(mod3$residuals, type = "o")
 
 #### (B) ####
 
-x4 <- data$BHK_NO
-x5 <- data$RERA
+x4 <- data$protein
+x5 <- data$weight
 
 m1 <- lm(Y ~ x1+x2+x3+x4+x5)
 sumM1 <- summary(m1)
+sumM1
 
 sum((Y - m1$coefficients[1] - m1$coefficients[2] * x1 - m1$coefficients[3] * x2- m1$coefficients[4] * x3- m1$coefficients[5] * x4- m1$coefficients[6] * x5)^2)
 
