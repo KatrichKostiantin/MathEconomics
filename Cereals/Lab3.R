@@ -117,3 +117,4 @@ summary(m2)
 
 #### (D) ####
 car::compareCoefs(m1, m2)
+
