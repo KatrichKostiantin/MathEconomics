@@ -65,5 +65,33 @@ sumMod
 #### (G) ####
 
 # Видаляємо неважливий фактор(x3), він є неважливим, бо його можна занулити
+mod2 <- lm(Y ~ x1 + x2)
+summary(mod2)
 
-mod2 <- lm(Y ~ x1+x2)
+#### (H) ####
+
+mod2 <- lm(Y ~ x1 + x2)
+summ2 <- summary(mod2)
+summ2$r.squared
+summ2$adj.r.squared
+
+mod3 <- lm(Y ~ x1 + x3)
+summ3 <- summary(mod3)
+summ3$r.squared
+summ3$adj.r.squared
+
+mod4 <- lm(Y ~ x2 + x3)
+summ4 <- summary(mod4)
+summ4$r.squared
+summ4$adj.r.squared
+
+
+#### (I) ####
+mod5 <- lm(Y ~ x1)
+summ5 <- summary(mod5)
+summ5$r.squared
+
+mod6 <- lm(Y ~ x2)
+summ6 <- summary(mod6)
+summ6$r.squared
+
