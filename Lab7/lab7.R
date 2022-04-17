@@ -16,6 +16,7 @@ summary(mod)
 
 modAll <- lm(rating ~ .-fat, data = data)
 modBIC <- MASS::stepAIC(modAll, k = log(nrow(data)))
+summary(modBIC)
 
 ##### (C) #####
 
