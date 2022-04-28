@@ -83,7 +83,7 @@ for (i in 1:m) {
 }
 R2
 
-# Знаходимо дисперсійно-інфляційного VIF-фактор(VIF). VIF = 5-10 або
+# Знаходимо дисперсійно-інфляційний VIF-фактор(VIF). VIF = 5-10 або
 # VIF>10 говорить про мультиколінеарність 
 
 VIF <- numeric(6)
@@ -135,7 +135,14 @@ pcor(X, method = "pearson")
 
 # Видалимо weight і potass
 mod2 <- lm(rating ~ calories+fiber+shelf+cups, data = data)
+
+mod3 <- lm(rating ~ calories+fiber+shelf+cups+weight, data = data)
+
+mod4 <- lm(rating ~ calories+potass+shelf+cups, data = data)
+summary(mod1)
+summary(mod3)
 summary(mod2)
+summary(mod4)
 #Якщо подивитися на підсумок моделі, значення adjusted R-квадрат
 # і F-значення покращились
 
@@ -144,5 +151,11 @@ VIF(mod1)
 VIF(mod2)
 # Значення VIF для пояснювальних змінних зменшилися до дуже низких значень.
 # Отже, модель тепер вільна від мультиколінеарності.
+
+round(cor(data), 2)
+install.packages('corrplot')
+library(corrplot)
+corrplot::corrplot(cor(data), addCoef.col = "grey")
+
 
 
