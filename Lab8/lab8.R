@@ -66,13 +66,13 @@ car::ncvTest(modY2)
 
 #### (E) ####
 
-# Зміщений і перетворений
+# Зміщений і перетворенийD
 delta <- 1 # Це налаштовується
 m <- -min(data$rating) + delta
-Y3 <- log(Y + m)
+Y3 <- log(data$rating + m)
 modY3 <- lm(Y3 ~ . - weight - potass -shelf - cups,data=data)
 plot(modY3, 3) 
-car::ncvTest(modY4)
+car::ncvTest(modY3)
 
 #### (F) ####
 
@@ -117,7 +117,7 @@ plot(pcaData, type = "l")
 #### (D) ####
 
 # діаграма сукупного відсотка дисперсії
-barplot(cumsum(pcaLaliga$sdev^2) / sum(pcaLaliga$sdev^2))
+barplot(cumsum(pcaData$sdev^2) / sum(pcaData$sdev^2))
 
 #### (E) ####
 
