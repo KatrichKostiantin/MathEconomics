@@ -139,3 +139,12 @@ summary(pcaDataStd)
 biplot(pcaData, cex = 0.75)
 
 biplot(pcaDataStd, cex = 0.75)
+
+#### (H) ####
+
+Data_X<- subset(secondData, select = -c(rating))
+pca_data_X <- princomp(x = Data_X, cor = TRUE, fix_sign = TRUE)
+dataPCA <- data.frame("Rating" = secondData$rating, pca_data_X$scores)
+modPCA <- lm(Rating ~ Comp.1 + Comp.2, dataPCA)
+summary(modPCA)
+
